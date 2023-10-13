@@ -14,6 +14,7 @@ namespace Game.Events.Data
 
     public enum FactionType
     {
+        None,
         Hawks,
         Ravens,
         Eagles,
