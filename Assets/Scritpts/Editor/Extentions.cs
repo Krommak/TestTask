@@ -1,29 +1,20 @@
+using Game.Data.Events;
 using UnityEditor;
 using UnityEngine;
 
 namespace Game.Inspectors
 {
-    public static class Extentions
+    public static class InspectorExtentions
     {
-        public static void ShowEnumValues(this SerializedProperty values)
+        public static void ShowList(this SerializedProperty values, string label)
         {
-            GUILayout.BeginVertical("Box");
-            EditorGUILayout.LabelField(values.name);
-            for (int i = 0; i < values.arraySize; i++)
-            {
-                SerializedProperty enumElementProperty = values.GetArrayElementAtIndex(i);
+            EditorGUILayout.Separator();
+            EditorGUILayout.PropertyField(values, new GUIContent(label), true);
+        }
 
-                enumElementProperty.enumValueIndex = EditorGUILayout.Popup("Element " + i, enumElementProperty.enumValueIndex, enumElementProperty.enumDisplayNames);
-            }
-
-            GUILayout.BeginHorizontal();
-            if (GUILayout.Button("+"))
-                values.InsertArrayElementAtIndex(values.arraySize);
-            if (GUILayout.Button("-"))
-                values.DeleteArrayElementAtIndex(values.arraySize - 1);
-            GUILayout.EndHorizontal();
-
-            GUILayout.EndVertical();
+        public static void SetNewContentID<T>(this T obj) where T : Object, IContentObject
+        {
+            obj.ContentID = AssetDatabase.GetAssetPath(obj);
         }
     }
 }
