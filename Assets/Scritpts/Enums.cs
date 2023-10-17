@@ -13,4 +13,12 @@ namespace Game
         Owls,
         Phoenixes
     }
+
+    public enum MissionState
+    {
+        Blocked,
+        Active,
+        Done,
+        TimeBlocked
+    }
 }

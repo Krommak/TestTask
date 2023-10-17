@@ -45,6 +45,9 @@ namespace Game.Inspectors
 
             EditorGUILayout.Separator();
 
+            Data.PositionOnScreen = EditorGUILayout.Vector2Field("Позиция на экране", Data.PositionOnScreen);
+            EditorGUILayout.Separator();
+
             serializedObject.Update(); 
             
             EditorGUILayout.Separator();

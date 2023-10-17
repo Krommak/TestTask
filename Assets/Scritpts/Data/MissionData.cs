@@ -8,6 +8,7 @@ namespace Game.Data.Missions
     public class MissionData : ScriptableObject, IContentObject
     {
         public string ContentID { get; set; }
+        public Vector2 PositionOnScreen;
         public string Name;
         public List<MissionSelect> ThisMissionSelects;
         public List<MissionSelect> PreviousMissionSelects;
