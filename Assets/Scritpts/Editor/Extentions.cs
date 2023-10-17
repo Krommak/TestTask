@@ -1,4 +1,4 @@
-using Game.Data.Events;
+using Game.Data;
 using UnityEditor;
 using UnityEngine;
 

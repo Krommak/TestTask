@@ -1,15 +1,15 @@
-using Game.Data.Events;
+using Game.Data.Missions;
 using UnityEditor;
 using UnityEngine;
 
 namespace Game.Inspectors
 {
-    [CustomEditor(typeof(EventData))]
-    public class EventDataInspector : CustomInspector<EventData>
+    [CustomEditor(typeof(MissionSelect))]
+    public class MissionSelectInspector : CustomInspector<MissionSelect>
     {
         private SerializedProperty _playerFactions;
         private SerializedProperty _enemyFactions;
-        private SerializedProperty _prevMissions;
+        private SerializedProperty _heroPoints;
 
         protected override void OnEnable()
         {
@@ -17,7 +17,7 @@ namespace Game.Inspectors
 
             _playerFactions = serializedObject.FindProperty("PlayerFactions");
             _enemyFactions = serializedObject.FindProperty("EnemyFactions");
-            _prevMissions = serializedObject.FindProperty("PreviousMissions");
+            _heroPoints = serializedObject.FindProperty("HeroPoints");
 
             if (string.IsNullOrEmpty(Data.ContentID))
                 Data.SetNewContentID();
@@ -25,24 +25,6 @@ namespace Game.Inspectors
 
         public override void OnInspectorGUI()
         {
-            EditorGUILayout.LabelField(Data.Name, GUIStyles.TitleText);
-
-            EditorGUILayout.Separator();
-            EditorGUILayout.BeginHorizontal();
-            EditorGUILayout.LabelField("ContentID: ");
-            GUILayout.FlexibleSpace();
-            EditorGUILayout.LabelField(Data.ContentID);
-            EditorGUILayout.EndHorizontal();
-
-            EditorGUILayout.BeginHorizontal();
-            if (GUILayout.Button("Обновить ID", GUIStyles.MiddleButton)) Data.SetNewContentID();
-            GUILayout.FlexibleSpace();
-            if (GUILayout.Button("Скопировать ID", GUIStyles.MiddleButton)) GUIUtility.systemCopyBuffer = Data.ContentID;
-            EditorGUILayout.EndHorizontal();
-
-            EditorGUILayout.Separator();
-            Data.Name = EditorGUILayout.TextField("Название миссии", Data.Name);
-
             EditorGUILayout.Separator();
             EditorGUILayout.LabelField("Пре-текст миссии");
             Data.PreText = EditorGUILayout.TextArea(Data.PreText, EditorStyles.textArea);
@@ -57,7 +39,8 @@ namespace Game.Inspectors
             EditorGUILayout.Separator();
             _enemyFactions.ShowList("Сторона противника");
             EditorGUILayout.Separator();
-            _prevMissions.ShowList("Список предыдущих миссий");
+            _heroPoints.ShowList("Очки героев");
+            EditorGUILayout.Separator();
 
             serializedObject.ApplyModifiedProperties();
 
