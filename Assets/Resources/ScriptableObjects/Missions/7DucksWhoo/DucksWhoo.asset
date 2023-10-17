@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eacf4c602f60d8c46ae1a602a96da715, type: 3}
+  m_Name: DucksWhoo
+  m_EditorClassIdentifier: 
+  Name: "\u0423\u0442\u043A\u0438, \u0443\u0423\u0443"
+  ThisMissionSelects:
+  - {fileID: 11400000, guid: 6eb24aeef9976a544a2ab83ee8c73ada, type: 2}
+  PreviousMissionSelects:
+  - {fileID: 11400000, guid: cf8059fe471b8f74ca9a70dbe7ed37fe, type: 2}
+  UnlockedCharacters: 
