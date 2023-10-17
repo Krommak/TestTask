@@ -8,8 +8,7 @@ namespace Game.Init
     [CreateAssetMenu(fileName = "MissionsGraph", menuName = "Game/MissionsGraph")]
     public class MissionsGraph : ScriptableObject
     {
-        [SerializeField]
-        private MissionData[] _missions;
+        public MissionData[] _missions;
         private Dictionary<string, HashSet<Mission>> _keysForMissions;
 
         public void GenerateGraph()
