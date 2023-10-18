@@ -12,6 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eacf4c602f60d8c46ae1a602a96da715, type: 3}
   m_Name: DucksWhoo
   m_EditorClassIdentifier: 
+  MissionNum: 7
+  PositionOnScreen: {x: 3, y: 0.75}
   Name: "\u0423\u0442\u043A\u0438, \u0443\u0423\u0443"
   ThisMissionSelects:
   - {fileID: 11400000, guid: 6eb24aeef9976a544a2ab83ee8c73ada, type: 2}

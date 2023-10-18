@@ -12,6 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eacf4c602f60d8c46ae1a602a96da715, type: 3}
   m_Name: RecruitingAnOwl
   m_EditorClassIdentifier: 
+  MissionNum: 5
+  PositionOnScreen: {x: -2.5, y: 1.5}
   Name: "\u0420\u0435\u043A\u0440\u0443\u0442\u0438\u043D\u0433 \u0421\u043E\u0432\u0443\u0445\u0430"
   ThisMissionSelects:
   - {fileID: 11400000, guid: f2290439dcc6c9648a086939a88e1714, type: 2}

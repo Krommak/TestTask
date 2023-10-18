@@ -12,6 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eacf4c602f60d8c46ae1a602a96da715, type: 3}
   m_Name: Skerries
   m_EditorClassIdentifier: 
+  MissionNum: 4
+  PositionOnScreen: {x: 2, y: 2}
   Name: "\u0428\u0445\u0435\u0440\u044B"
   ThisMissionSelects:
   - {fileID: 11400000, guid: 9c84b7771578865498c5e6755fcf009e, type: 2}

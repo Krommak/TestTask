@@ -12,6 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eacf4c602f60d8c46ae1a602a96da715, type: 3}
   m_Name: SimurgWokeUp
   m_EditorClassIdentifier: 
+  MissionNum: 10
+  PositionOnScreen: {x: 1, y: 3.5}
   Name: "\u0421\u0438\u043C\u0443\u0440\u0433 \u043F\u0440\u043E\u0441\u043D\u0443\u043B\u0441\u044F"
   ThisMissionSelects:
   - {fileID: 11400000, guid: a0a37957eaf8819419a12ee037a8f887, type: 2}
