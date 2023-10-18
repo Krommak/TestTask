@@ -1,4 +1,5 @@
 using Game.Init;
+using Game.UI;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -8,6 +9,8 @@ namespace Game
     {
         [SerializeField]
         private MissionsGraph _graph;
+        [SerializeField]
+        private UIManager _uiManager; 
 
         private void Start()
         {

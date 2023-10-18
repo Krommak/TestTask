@@ -9,6 +9,7 @@ namespace Game.Data.Missions
     public class MissionData : ScriptableObject, IContentObject
     {
         public string ContentID { get; set; }
+        public int MissionNum;
         public Vector2 PositionOnScreen;
         public string Name;
         public List<MissionSelect> ThisMissionSelects;
@@ -21,9 +22,10 @@ namespace Game.Data.Missions
                 ? "Prefabs/DoubleMissionPrefab"
                 : "Prefabs/ClassicMissionPrefab";
 
-            var mission = Resources.Load<Mission>(path);
-            var go = GameObject.Instantiate(mission, PositionOnScreen, Quaternion.identity);
-            go.name = Name;
+            var prefab = Resources.Load<Mission>(path);
+            var mission = GameObject.Instantiate(prefab, PositionOnScreen, Quaternion.identity).GetComponent<Mission>();
+
+            mission.gameObject.name = Name;
 
             mission.InitMission(this);
 
