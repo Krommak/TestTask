@@ -22,8 +22,8 @@ namespace Game.Missions
             }
         }
 
-        private GameObject _thisGO;
-        private MissionData _data;
+        protected GameObject _thisGO;
+        protected MissionData _data;
 
         public void InitMission(MissionData data)
         {
