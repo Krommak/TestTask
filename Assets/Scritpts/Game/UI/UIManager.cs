@@ -27,12 +27,16 @@ namespace Game.UI
             }
         }
 
-        public void UpdateElement<T>(IUIElementData data) where T : UIElement
+        public void UpdateElement<T>(IUIElementData data = null) where T : UIElement
         {
             if(_elementsByType.ContainsKey(typeof(T)))
             {
-                _activeElement?.Cleare();
-                _activeElement?.gameObject.SetActive(false);
+                if(_activeElement != null 
+                    && _activeElement is not IDontDeactivateOnOtherPanelOpened)
+                {
+                    _activeElement?.Cleare();
+                    _activeElement?.gameObject.SetActive(false);
+                }
 
                 var element = _elementsByType[typeof(T)];
                 element.gameObject.SetActive(true);

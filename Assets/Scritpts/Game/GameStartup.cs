@@ -1,6 +1,8 @@
+using Game.Data.Heroes;
 using Game.Init;
 using Game.UI;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 namespace Game
@@ -10,17 +12,42 @@ namespace Game
         [SerializeField]
         private MissionsGraph _graph;
         [SerializeField]
-        private UIManager _uiManager; 
+        private BeginningSettings _beginningSettings;
+
+        private RuntimeData _runtimeData;
+
+        private void Awake()
+        {
+            _runtimeData = new RuntimeData();
+        }
 
         private void Start()
         {
             _graph.GenerateGraph();
+            _runtimeData.UnlockHero(_beginningSettings.StartedHero.Faction);
         }
     }
 
     public class RuntimeData
     {
-        public HashSet<string> Keys;
-        public HashSet<string> DoneMissions;
+        public static RuntimeData Instance { get; private set; }
+        private Dictionary<FactionType, Hero> _heroesByType { get; set; }
+
+        public RuntimeData()
+        {
+            Instance = this;
+            _heroesByType = new Dictionary<FactionType, Hero>();
+        }
+
+        public List<Hero> GetOpenedHeroes()
+        {
+            return _heroesByType.Values.ToList();
+        }
+
+        public void UnlockHero(FactionType type)
+        {
+            _heroesByType.Add(type, new Hero(type));
+            UIManager.Instance.UpdateElement<HeroPanel>();
+        }
     }
 }

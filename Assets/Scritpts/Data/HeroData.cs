@@ -1,12 +1,18 @@
-using UnityEngine;
+using Game.UI;
+using System;
 
 namespace Game.Data.Heroes
 {
-    [CreateAssetMenu(fileName = "HeroData", menuName = "Game/Data/Hero")]
-    public class HeroData : ScriptableObject, IContentObject
+    [Serializable]
+    public class Hero : IUIElementData
     {
-        public FactionType FactionType;
+        public Hero(FactionType factionType)
+        {
+            Faction = factionType;
+            Points = 0;
+        }
 
-        public string ContentID { get; set; }
+        public FactionType Faction;
+        public int Points;
     }
 }
