@@ -1,4 +1,3 @@
-using Game.Data.Missions;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -24,7 +23,14 @@ namespace Game.UI
 
                 _titleField.text = missionData.Name;
                 _descriptionField.text = missionData.Description;
-                _startMissionButton.onClick.AddListener(() => StartMission());
+
+                if (missionData.Hero != null)
+                {
+                    _startMissionButton.onClick.AddListener(() => StartMission());
+                    _startMissionButton.interactable = true;
+                }
+                else
+                    _startMissionButton.interactable = false;
             }
         }
 
@@ -35,15 +41,7 @@ namespace Game.UI
 
         public override void Cleare()
         {
+            _startMissionButton.onClick.RemoveAllListeners();
         }
-    }
-
-    public class MissionInfoData : IUIElementData
-    {
-        public string Name { get; set; }
-        public string Description { get; set; }
-        public FactionType[] PlayerFactions { get; set; }
-        public FactionType[] EnemyFactions { get; set; }
-
     }
 }

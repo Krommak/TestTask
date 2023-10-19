@@ -30,7 +30,7 @@ namespace Game.Missions
             _data = data;
             _thisGO = this.gameObject;
 
-            if(_data.PreviousMissionSelects.Count == 0)
+            if (_data.PreviousMissionSelects.Count == 0)
             {
                 SetState(MissionState.Active);
             }
@@ -44,6 +44,9 @@ namespace Game.Missions
 
         public abstract void SetState(MissionState state);
 
-        protected abstract void EndInit();
+        protected virtual void EndInit()
+        {
+
+        }
     }
 }

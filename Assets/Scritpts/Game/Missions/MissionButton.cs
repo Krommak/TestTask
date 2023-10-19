@@ -1,3 +1,4 @@
+using Game.Process;
 using Game.UI;
 using TMPro;
 using UnityEngine;
@@ -18,6 +19,7 @@ namespace Game.Missions
         private void OnMouseDown()
         {
             UIManager.Instance.UpdateElement<MissionInfoElement>(_data);
+            GameProcess.Instance.OpenMission(_data);
         }
     }
 }

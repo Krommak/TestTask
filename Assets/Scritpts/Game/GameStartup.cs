@@ -1,5 +1,6 @@
 using Game.Data.Heroes;
 using Game.Init;
+using Game.Process;
 using Game.UI;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,10 +16,12 @@ namespace Game
         private BeginningSettings _beginningSettings;
 
         private RuntimeData _runtimeData;
+        private GameProcess _gameProcess;
 
         private void Awake()
         {
             _runtimeData = new RuntimeData();
+            _gameProcess = new GameProcess();
         }
 
         private void Start()
