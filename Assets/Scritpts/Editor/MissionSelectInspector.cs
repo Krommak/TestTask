@@ -26,6 +26,18 @@ namespace Game.Inspectors
         public override void OnInspectorGUI()
         {
             EditorGUILayout.Separator();
+            EditorGUILayout.BeginHorizontal();
+            EditorGUILayout.LabelField("ContentID: ");
+            GUILayout.FlexibleSpace();
+            EditorGUILayout.LabelField(Data.ContentID);
+            EditorGUILayout.EndHorizontal();
+            EditorGUILayout.BeginHorizontal();
+            if (GUILayout.Button("Обновить ID", GUIStyles.MiddleButton)) Data.SetNewContentID();
+            GUILayout.FlexibleSpace();
+            if (GUILayout.Button("Скопировать ID", GUIStyles.MiddleButton)) GUIUtility.systemCopyBuffer = Data.ContentID;
+            EditorGUILayout.EndHorizontal();
+
+            EditorGUILayout.Separator();
             EditorGUILayout.LabelField("Пре-текст миссии");
             Data.PreText = EditorGUILayout.TextArea(Data.PreText, EditorStyles.textArea);
 

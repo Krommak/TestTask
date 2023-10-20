@@ -12,7 +12,7 @@ namespace Game.Inspectors
             EditorGUILayout.PropertyField(values, new GUIContent(label), true);
         }
 
-        public static void SetNewContentID<T>(this T obj) where T : Object, IContentObject
+        public static void SetNewContentID<T>(this T obj) where T : ContentObject
         {
             obj.ContentID = AssetDatabase.GetAssetPath(obj);
         }

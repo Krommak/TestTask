@@ -17,13 +17,15 @@ namespace Game.Missions
 
                 var data = new MissionInfoData()
                 {
+                    SelectID = _data.ThisMissionSelects[i].ContentID,
                     Name = _data.Name,
-                    Description = _data.ThisMissionSelects[i].PreText + '\n' + _data.ThisMissionSelects[i].Description,
+                    PreText = _data.ThisMissionSelects[i].PreText,
+                    Description = _data.ThisMissionSelects[i].Description,
                     EnemyFactions = _data.ThisMissionSelects[i].EnemyFactions,
                     PlayerFactions = _data.ThisMissionSelects[i].PlayerFactions
                 };
 
-                missionButtons[i].InitButton(data, $"{_data.MissionNum}.{i+1}");
+                missionButtons[i].InitButton(data, $"{_data.MissionNum}.{i+1}", state);
             }
         }
 

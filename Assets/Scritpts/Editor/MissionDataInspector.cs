@@ -33,7 +33,6 @@ namespace Game.Inspectors
             GUILayout.FlexibleSpace();
             EditorGUILayout.LabelField(Data.ContentID);
             EditorGUILayout.EndHorizontal();
-
             EditorGUILayout.BeginHorizontal();
             if (GUILayout.Button("Обновить ID", GUIStyles.MiddleButton)) Data.SetNewContentID();
             GUILayout.FlexibleSpace();

@@ -22,7 +22,7 @@ namespace Game.UI
                 _data = missionData;
 
                 _titleField.text = missionData.Name;
-                _descriptionField.text = missionData.Description;
+                _descriptionField.text = missionData.PreText;
 
                 if (missionData.Hero != null)
                 {
@@ -36,7 +36,7 @@ namespace Game.UI
 
         private void StartMission()
         {
-            //UIManager.Instance.UpdateElement<>
+            UIManager.Instance.UpdateElement<EndMissionInfoElement>(_data);
         }
 
         public override void Cleare()

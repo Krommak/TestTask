@@ -1,17 +1,13 @@
 using Game.Data.Heroes;
+using Game.Missions;
+using Game.Systems;
 using Game.UI;
 
 namespace Game.Process
 {
-    public class GameProcess
+    public class GameProcess : Singleton<GameProcess>
     {
-        public static GameProcess Instance;
         private MissionRuned _missionRuned;
-
-        public GameProcess()
-        {
-            Instance = this;
-        }
 
         public void OpenMission(MissionInfoData mission)
         {
@@ -20,8 +16,14 @@ namespace Game.Process
 
         public void SelectHero(Hero hero)
         {
-            if(hero != null)
+            if(hero != null && _missionRuned != null)
                 _missionRuned.AddHero(hero);
+        }
+
+        public void CloseMission()
+        {
+            _missionRuned.ApplyMissionEffects();
+            UIManager.Instance.CleareaAndHideElement<EndMissionInfoElement>();
         }
     }
 
@@ -38,6 +40,14 @@ namespace Game.Process
         {
             _mission.Hero = hero;
             UIManager.Instance.UpdateElement<MissionInfoElement>(_mission);
+        }
+
+        public void ApplyMissionEffects()
+        {
+            TriggerListenerSystem.Instance.OnTrigger(new MissionMessage()
+            {
+                DoneMissionID = _mission.SelectID
+            });
         }
     }
 }
