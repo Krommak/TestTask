@@ -32,7 +32,7 @@ namespace Game
         private void Start()
         {
             _graph.GenerateGraph(_missionContainer);
-            _runtimeData.UnlockHero(_beginningSettings.StartedHero.Faction);
+            _runtimeData.InitHeroes(_beginningSettings.Heroes);
         }
 
         private void OnDestroy()
@@ -52,14 +52,54 @@ namespace Game
             _heroesByType = new Dictionary<FactionType, Hero>();
         }
 
+        public void InitHeroes(HeroData[] heroes)
+        {
+            foreach (var item in heroes)
+            {
+                _heroesByType.Add(item.Faction, item.GetHero());
+            }
+            UIManager.Instance.UpdateElement<HeroPanel>();
+        }
+
         public List<Hero> GetOpenedHeroes()
         {
-            return _heroesByType.Values.ToList();
+            var result = new List<Hero>();
+            _heroesByType.Values.ToList().ForEach(x =>
+            {
+                if(x.Unlocked)
+                    result.Add(x);
+            });
+            return result;
+        }
+
+        public void ApplyExp(FactionType type, int points)
+        {
+            if(type == FactionType.None)
+            {
+                type = GameProcess.Instance.GetActiveHeroType();
+            }
+
+            _heroesByType.Values.ToList().ForEach(x =>
+            {
+                if (x.Faction == type)
+                {
+                    if (points > 0 && x.Unlocked)
+                        x.Points += points;
+                    else
+                        x.Points += points;
+                }
+            });
+
+            UIManager.Instance.UpdateElement<HeroPanel>();
         }
 
         public void UnlockHero(FactionType type)
         {
-            _heroesByType.Add(type, new Hero(type));
+            _heroesByType.Values.ToList().ForEach(x =>
+            {
+                if (x.Faction == type)
+                    x.Unlocked = true;
+            });
             UIManager.Instance.UpdateElement<HeroPanel>();
         }
     }

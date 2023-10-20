@@ -1,28 +1,11 @@
 using Game.Data.Missions;
 using Game.Systems;
-using System;
 using UnityEngine;
 
 namespace Game.Missions
 {
     public abstract class Mission : MonoBehaviour, IListener
     {
-        public MissionState MissionState { get; private set; }
-        public Action OnMissionStarted;
-        public Action OnMissionEnded;
-
-        public string ContentID
-        {
-            get
-            {
-                return _data.ContentID;
-            }
-            private set
-            {
-
-            }
-        }
-
         protected GameObject _thisGO;
         protected MissionData _data;
 
@@ -49,16 +32,9 @@ namespace Game.Missions
             {
                 SetState(MissionState.Blocked);
             }
-
-            EndInit();
         }
 
         public abstract void SetState(MissionState state);
-
-        protected virtual void EndInit()
-        {
-
-        }
 
         public void OnTrigger(IMessage message)
         {

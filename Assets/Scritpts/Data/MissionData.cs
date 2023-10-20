@@ -1,5 +1,4 @@
 using Game.Missions;
-using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -37,12 +36,5 @@ namespace Game.Data.Missions
 
             return node;
         }
-    }
-
-    [Serializable]
-    public class EffectForHero
-    {
-        public FactionType HeroFaction;
-        public int HeroPoints;
     }
 }

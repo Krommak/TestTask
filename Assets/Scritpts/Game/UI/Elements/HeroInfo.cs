@@ -29,7 +29,7 @@ namespace Game.UI
             {
                 _hero = heroData;
                 _points.text = heroData.Points.ToString();
-                _heroName.text = heroData.Faction.ToString();
+                _heroName.text = heroData.Name.ToString();
             }
         }
 

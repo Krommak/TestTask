@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 namespace Game.Data.Missions
@@ -11,6 +12,13 @@ namespace Game.Data.Missions
         public FactionType[] PlayerFactions;
         public FactionType[] EnemyFactions;
 
-        public EffectForHero[] HeroPoints;
+        public PointsForHero[] HeroPoints;
+    }
+
+    [Serializable]
+    public class PointsForHero
+    {
+        public FactionType HeroFaction;
+        public int HeroPoints;
     }
 }

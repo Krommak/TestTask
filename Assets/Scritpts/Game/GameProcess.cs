@@ -8,7 +8,7 @@ namespace Game.Process
     public class GameProcess : Singleton<GameProcess>
     {
         private MissionRuned _missionRuned;
-
+        private FactionType _activeHero;
         public void OpenMission(MissionInfoData mission)
         {
             _missionRuned = new MissionRuned(mission);
@@ -17,8 +17,12 @@ namespace Game.Process
         public void SelectHero(Hero hero)
         {
             if(hero != null && _missionRuned != null)
+            {
+                _activeHero = hero.Faction;
                 _missionRuned.AddHero(hero);
+            }
         }
+        public FactionType GetActiveHeroType() => _activeHero;
 
         public void CloseMission()
         {
@@ -44,6 +48,8 @@ namespace Game.Process
 
         public void ApplyMissionEffects()
         {
+            _mission.Effects.ForEach(x => x.Execute());
+
             TriggerListenerSystem.Instance.OnTrigger(new MissionMessage()
             {
                 DoneMissionID = _mission.SelectID

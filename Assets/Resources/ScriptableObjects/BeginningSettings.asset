@@ -12,6 +12,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc52c7d88d9585a4b9edf2bed2aadf16, type: 3}
   m_Name: BeginningSettings
   m_EditorClassIdentifier: 
-  StartedHero:
+  Heroes:
+  - Name: "\u042F\u0441\u0442\u0440\u0435\u0431"
     Faction: 1
     Points: 0
+    Unlocked: 1
+  - Name: "\u0421\u043E\u0432\u0443\u0445"
+    Faction: 8
+    Points: 0
+    Unlocked: 0
+  - Name: "\u0412\u043E\u0440\u043E\u043D"
+    Faction: 2
+    Points: 0
+    Unlocked: 0
+  - Name: "\u0427\u0430\u0439\u043A\u0430"
+    Faction: 7
+    Points: 0
+    Unlocked: 0
