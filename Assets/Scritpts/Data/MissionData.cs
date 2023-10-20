@@ -13,6 +13,7 @@ namespace Game.Data.Missions
         public List<MissionSelect> ThisMissionSelects;
         public List<MissionSelect> PreviousMissionSelects;
         public FactionType[] UnlockedCharacters;
+        public List<MissionSelect> BlockedMissions;
 
         public KeyValuePair<Mission, HashSet<string>> GetNode(Transform container)
         {
@@ -35,6 +36,21 @@ namespace Game.Data.Missions
             }
 
             return node;
+        }
+
+        public List<string> GetBlockedMissions()
+        {
+            var result = new List<string>();
+            foreach (var item in BlockedMissions)
+            {
+                result.Add(item.ContentID);
+            }
+            foreach (var item in ThisMissionSelects)
+            {
+                result.Add(item.ContentID);
+            }
+
+            return result;
         }
     }
 }

@@ -2,6 +2,7 @@ using Game.Process;
 using Game.Systems;
 using Game.UI;
 using System;
+using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
@@ -29,8 +30,16 @@ namespace Game.Missions
         {
             if(message is MissionButtonMessage mess)
             {
-                _state = mess.State;
-                ApplyNewState();
+                if(mess.ForConcreteButtons && mess.Selects.Contains(_data.SelectID))
+                {
+                    _state = mess.State;
+                    ApplyNewState();
+                }
+                else if(!mess.ForConcreteButtons)
+                {
+                    _state = mess.State;
+                    ApplyNewState();
+                }
             }
         }
 
@@ -75,5 +84,7 @@ namespace Game.Missions
     public class MissionButtonMessage : IMessage
     {
         public MissionState State;
+        public bool ForConcreteButtons;
+        public List<string> Selects;
     }
 }

@@ -10,6 +10,7 @@ namespace Game.Inspectors
         private SerializedProperty _playerFactions;
         private SerializedProperty _enemyFactions;
         private SerializedProperty _heroPoints;
+        private SerializedProperty _blockedMissions;
 
         protected override void OnEnable()
         {
@@ -18,6 +19,7 @@ namespace Game.Inspectors
             _playerFactions = serializedObject.FindProperty("PlayerFactions");
             _enemyFactions = serializedObject.FindProperty("EnemyFactions");
             _heroPoints = serializedObject.FindProperty("HeroPoints");
+            _blockedMissions = serializedObject.FindProperty("BlockedMissions");
 
             if (string.IsNullOrEmpty(Data.ContentID))
                 Data.SetNewContentID();
@@ -53,7 +55,8 @@ namespace Game.Inspectors
             EditorGUILayout.Separator();
             _heroPoints.ShowList("Очки героев");
             EditorGUILayout.Separator();
-
+            _blockedMissions.ShowList("Временно блокируемые миссии");
+            EditorGUILayout.Separator();
             serializedObject.ApplyModifiedProperties();
 
             if (GUILayout.Button("Сохранить"))

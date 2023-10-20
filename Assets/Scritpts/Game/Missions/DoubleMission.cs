@@ -33,7 +33,8 @@ namespace Game.Missions
                     Description = _data.ThisMissionSelects[i].Description,
                     EnemyFactions = _data.ThisMissionSelects[i].EnemyFactions,
                     PlayerFactions = _data.ThisMissionSelects[i].PlayerFactions,
-                    Effects = effects
+                    Effects = effects,
+                    BlockedMissions = _data.GetBlockedMissions()
                 };
 
                 missionButtons[i].InitButton(data, $"{_data.MissionNum}.{i+1}", state);

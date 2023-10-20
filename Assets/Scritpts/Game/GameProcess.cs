@@ -22,6 +22,7 @@ namespace Game.Process
                 _missionRuned.AddHero(hero);
             }
         }
+
         public FactionType GetActiveHeroType() => _activeHero;
 
         public void CloseMission()

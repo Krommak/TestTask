@@ -1,3 +1,5 @@
+using Game.Missions;
+using Game.Systems;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -36,6 +38,13 @@ namespace Game.UI
 
         private void StartMission()
         {
+            var message = new MissionButtonMessage()
+            {
+                State = MissionState.TimeBlocked,
+                ForConcreteButtons = true,
+                Selects = _data.BlockedMissions
+            };
+            TriggerListenerSystem.Instance.OnTrigger(message);
             UIManager.Instance.UpdateElement<EndMissionInfoElement>(_data);
         }
 

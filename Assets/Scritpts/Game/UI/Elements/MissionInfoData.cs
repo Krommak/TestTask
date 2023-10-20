@@ -14,6 +14,6 @@ namespace Game.UI
         public FactionType[] EnemyFactions { get; set; }
         public List<MissionEffect> Effects { get; set; }
         public Hero Hero { get; set; }
-        public object TriggerListenerSystem { get; internal set; }
+        public List<string> BlockedMissions { get; set; }
     }
 }
