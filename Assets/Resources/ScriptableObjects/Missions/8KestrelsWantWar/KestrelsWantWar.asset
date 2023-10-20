@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eacf4c602f60d8c46ae1a602a96da715, type: 3}
   m_Name: KestrelsWantWar
   m_EditorClassIdentifier: 
+  ContentID: Assets/Resources/ScriptableObjects/Missions/8KestrelsWantWar/KestrelsWantWar.asset
   MissionNum: 8
   PositionOnScreen: {x: -3, y: 2.75}
   Name: "\u041F\u0443\u0441\u0442\u0435\u043B\u044C\u0433\u0438 \u0445\u043E\u0442\u044F\u0442

@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eacf4c602f60d8c46ae1a602a96da715, type: 3}
   m_Name: RecruitingTheRaven
   m_EditorClassIdentifier: 
+  ContentID: Assets/Resources/ScriptableObjects/Missions/6RecruitingTheRaven/RecruitingTheRaven.asset
   MissionNum: 6
   PositionOnScreen: {x: 0.25, y: 1.5}
   Name: "\u0420\u0435\u043A\u0440\u0443\u0442\u0438\u043D\u0433 \u0412\u043E\u0440\u043E\u043D\u0430"

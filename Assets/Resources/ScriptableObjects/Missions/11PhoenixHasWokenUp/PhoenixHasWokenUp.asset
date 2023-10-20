@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eacf4c602f60d8c46ae1a602a96da715, type: 3}
   m_Name: PhoenixHasWokenUp
   m_EditorClassIdentifier: 
+  ContentID: Assets/Resources/ScriptableObjects/Missions/11PhoenixHasWokenUp/PhoenixHasWokenUp.asset
   MissionNum: 11
   PositionOnScreen: {x: 0.25, y: 5}
   Name: "\u0424\u0435\u043D\u0438\u043A\u0441 \u043F\u0440\u043E\u0441\u043D\u0443\u043B\u0441\u044F"
