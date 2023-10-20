@@ -8,12 +8,20 @@ namespace Game.UI
     {
         [SerializeField]
         private HeroInfo _heroInfoPrefab;
+        [SerializeField]
+        private int _maxHeroInfoWidth = 125;
 
         private Dictionary<FactionType, HeroInfo> _heroesInfoByType;
 
         private void AddHero(Hero hero)
         {
             var info = Instantiate<HeroInfo>(_heroInfoPrefab, transform);
+            var rect = transform as RectTransform;
+            var width = rect.rect.width/5;
+            info.GetComponent<RectTransform>()
+                .SetSizeWithCurrentAnchors(
+                    RectTransform.Axis.Horizontal,
+                    width > _maxHeroInfoWidth ? _maxHeroInfoWidth : width);
             info.UpdateInfo(hero);
             _heroesInfoByType.Add(hero.Faction, info);
         }
