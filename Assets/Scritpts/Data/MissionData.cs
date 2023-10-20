@@ -6,9 +6,8 @@ using UnityEngine;
 namespace Game.Data.Missions
 {
     [CreateAssetMenu(fileName = "MissionData", menuName = "Game/Data/MissionData")]
-    public class MissionData : ScriptableObject, IContentObject
+    public class MissionData : ContentObject
     {
-        public string ContentID { get; set; }
         public int MissionNum;
         public Vector2 PositionOnScreen;
         public string Name;
@@ -16,7 +15,7 @@ namespace Game.Data.Missions
         public List<MissionSelect> PreviousMissionSelects;
         public FactionType[] UnlockedCharacters;
 
-        public KeyValuePair<Mission, HashSet<string>> GetNode()
+        public KeyValuePair<Mission, HashSet<string>> GetNode(Transform container)
         {
             var path = ThisMissionSelects.Count > 1
                 ? "Prefabs/DoubleMissionPrefab"
@@ -24,7 +23,7 @@ namespace Game.Data.Missions
 
             var prefab = Resources.Load<Mission>(path);
             var mission = GameObject.Instantiate(prefab, PositionOnScreen, Quaternion.identity).GetComponent<Mission>();
-
+            mission.transform.parent = container;
             mission.gameObject.name = Name;
 
             mission.InitMission(this);

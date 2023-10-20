@@ -3,10 +3,8 @@ using UnityEngine;
 namespace Game.Data.Missions
 {
     [CreateAssetMenu(fileName = "MissionSelect", menuName = "Game/Data/MissionSelect")]
-    public class MissionSelect : ScriptableObject, IContentObject
+    public class MissionSelect : ContentObject
     {
-        public string ContentID { get; set; }
-     
         public string PreText;
         public string Description;
 

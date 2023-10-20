@@ -11,13 +11,13 @@ namespace Game.Init
         public MissionData[] _missions;
         private Dictionary<string, HashSet<Mission>> _keysForMissions;
 
-        public void GenerateGraph()
+        public void GenerateGraph(Transform container)
         {
             _keysForMissions = new Dictionary<string, HashSet<Mission>>();
 
             foreach (var item in _missions)
             {
-                var node = item.GetNode();
+                var node = item.GetNode(container);
                 foreach (var key in node.Value)
                 {
                     SetNewPair(key, node.Key);
