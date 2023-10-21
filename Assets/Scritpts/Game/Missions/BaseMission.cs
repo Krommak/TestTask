@@ -4,20 +4,10 @@ using UnityEngine;
 
 namespace Game.Missions
 {
-    public abstract class Mission : MonoBehaviour, IListener
+    public abstract class Mission : MonoBehaviour
     {
         protected GameObject _thisGO;
         protected MissionData _data;
-
-        private void OnEnable()
-        {
-            TriggerListenerSystem.Instance.AddListener(this, typeof(MissionMessage));
-        }
-
-        private void OnDisable()
-        {
-            TriggerListenerSystem.Instance?.RemoveListener(this, typeof(MissionMessage));
-        }
 
         public void InitMission(MissionData data)
         {
@@ -36,27 +26,14 @@ namespace Game.Missions
 
         public abstract void SetState(MissionState state);
 
-        public void OnTrigger(IMessage message)
+        public bool CompareSelectID(string otherID)
         {
-            if (message is MissionMessage mess)
+            foreach (var item in _data.ThisMissionSelects)
             {
-                _data.PreviousMissionSelects.ForEach(x =>
-                {
-                    if(x.ContentID == mess.DoneMissionID)
-                    {
-                        SetState(MissionState.Active);
-                        return;
-                    }
-                });
-                _data.ThisMissionSelects.ForEach(x =>
-                {
-                    if (x.ContentID == mess.DoneMissionID)
-                    {
-                        SetState(MissionState.Done);
-                        return;
-                    }
-                });
+                if (item.ContentID == otherID)
+                    return true;
             }
+            return false;
         }
     }
 

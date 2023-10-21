@@ -18,6 +18,7 @@ namespace Game
         [SerializeField]
         private Transform _missionContainer;
 
+        private MissionsGraph _missionsGraph;
         private RuntimeData _runtimeData;
         private GameProcess _gameProcess;
         private TriggerListenerSystem _triggerListener;
@@ -31,7 +32,7 @@ namespace Game
 
         private void Start()
         {
-            _graph.GenerateGraph(_missionContainer);
+            _missionsGraph = _graph.GetGraph(_missionContainer);
             _runtimeData.InitHeroes(_beginningSettings.Heroes);
         }
 

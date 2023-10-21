@@ -30,7 +30,7 @@ namespace Game.Data.Missions
 
             var node = new KeyValuePair<Mission, HashSet<string>>(mission, new HashSet<string>());
             
-            foreach (var item in ThisMissionSelects)
+            foreach (var item in PreviousMissionSelects)
             {
                 node.Value.Add(item.ContentID);
             }
