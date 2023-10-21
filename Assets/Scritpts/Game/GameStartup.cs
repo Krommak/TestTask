@@ -1,5 +1,6 @@
 using Game.Data.Heroes;
 using Game.Init;
+using Game.Messages;
 using Game.Process;
 using Game.Systems;
 using Game.UI;
@@ -21,13 +22,11 @@ namespace Game
         private MissionsGraph _missionsGraph;
         private RuntimeData _runtimeData;
         private GameProcess _gameProcess;
-        private TriggerListenerSystem _triggerListener;
 
         private void Awake()
         {
             _runtimeData = new RuntimeData();
             _gameProcess = new GameProcess();
-            _triggerListener = new TriggerListenerSystem();
         }
 
         private void Start()
@@ -40,7 +39,7 @@ namespace Game
         {
             _runtimeData.Dispose();
             _gameProcess.Dispose();
-            _triggerListener.Dispose();
+            TriggerListenerSystem.ClearAllListeners();
         }
     }
 
@@ -77,7 +76,9 @@ namespace Game
         {
             if(type == FactionType.None)
             {
-                type = GameProcess.Instance.GetActiveHeroType();
+                var message = new GetHeroTypeMessage();
+                TriggerListenerSystem.OnTrigger(message);
+                type = message.Type;
             }
 
             _heroesByType.Values.ToList().ForEach(x =>

@@ -1,5 +1,4 @@
 using Game.Data.Missions;
-using Game.Systems;
 using UnityEngine;
 
 namespace Game.Missions
@@ -35,10 +34,5 @@ namespace Game.Missions
             }
             return false;
         }
-    }
-
-    public class MissionMessage : IMessage
-    {
-        public string DoneMissionID;
     }
 }

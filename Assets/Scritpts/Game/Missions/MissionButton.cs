@@ -1,8 +1,7 @@
-using Game.Process;
+using Game.Messages;
 using Game.Systems;
 using Game.UI;
 using System;
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
@@ -16,26 +15,26 @@ namespace Game.Missions
         private SpriteRenderer _image;
         private MissionInfoData _data;
         private MissionState _state;
-        
+
         public void InitButton(MissionInfoData data, string missionNum, MissionState state)
         {
             _state = state;
             _data = data;
             _text.text = missionNum;
             ApplyNewState();
-            TriggerListenerSystem.Instance.AddListener(this, typeof(MissionButtonMessage));
+            TriggerListenerSystem.AddListener(this, typeof(MissionButtonMessage));
         }
 
         public void OnTrigger(IMessage message)
         {
-            if(message is MissionButtonMessage mess)
+            if (message is MissionButtonMessage mess)
             {
-                if(mess.ForConcreteButtons && mess.Selects.Contains(_data.SelectID))
+                if (mess.ForConcreteButtons && mess.Selects.Contains(_data.SelectID))
                 {
                     _state = mess.State;
                     ApplyNewState();
                 }
-                else if(!mess.ForConcreteButtons)
+                else if (!mess.ForConcreteButtons)
                 {
                     _state = mess.State;
                     ApplyNewState();
@@ -51,7 +50,7 @@ namespace Game.Missions
 
         private void ApplyNewState()
         {
-            switch(_state)
+            switch (_state)
             {
                 case MissionState.Blocked:
                     break;
@@ -72,19 +71,12 @@ namespace Game.Missions
             if (_state != MissionState.Active) return;
 
             UIManager.Instance.UpdateElement<MissionInfoElement>(_data);
-            GameProcess.Instance.OpenMission(_data);
+            TriggerListenerSystem.OnTrigger(new MissionStartMessage() { MissionInfo = _data });
         }
 
         public void Dispose()
         {
-            TriggerListenerSystem.Instance.RemoveListener(this, typeof(MissionButtonMessage));
+            TriggerListenerSystem.RemoveListener(this);
         }
-    }
-
-    public class MissionButtonMessage : IMessage
-    {
-        public MissionState State;
-        public bool ForConcreteButtons;
-        public List<string> Selects;
     }
 }

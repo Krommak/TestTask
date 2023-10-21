@@ -1,5 +1,6 @@
 using Game.Data.Heroes;
-using Game.Process;
+using Game.Messages;
+using Game.Systems;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -19,7 +20,7 @@ namespace Game.UI
         {
             GetComponent<Button>().onClick.AddListener(() =>
             {
-                GameProcess.Instance.SelectHero(_hero);
+                TriggerListenerSystem.OnTrigger(new SelectHeroMessage() { Hero = _hero });
             });
         }
 

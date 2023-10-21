@@ -1,4 +1,6 @@
+using Game.Messages;
 using Game.Process;
+using Game.Systems;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -52,7 +54,7 @@ namespace Game.UI
 
         private void CloseMission()
         {
-            GameProcess.Instance.CloseMission();
+            TriggerListenerSystem.OnTrigger(new MissionEndMessage());
         }
 
         public override void Cleare()

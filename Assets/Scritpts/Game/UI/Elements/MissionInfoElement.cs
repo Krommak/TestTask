@@ -1,3 +1,4 @@
+using Game.Messages;
 using Game.Missions;
 using Game.Systems;
 using TMPro;
@@ -44,7 +45,7 @@ namespace Game.UI
                 ForConcreteButtons = true,
                 Selects = _data.BlockedMissions
             };
-            TriggerListenerSystem.Instance.OnTrigger(message);
+            TriggerListenerSystem.OnTrigger(message);
             UIManager.Instance.UpdateElement<EndMissionInfoElement>(_data);
         }
 

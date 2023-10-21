@@ -1,4 +1,5 @@
 using Game.Data.Missions;
+using Game.Messages;
 using Game.Missions;
 using Game.Systems;
 using System;
@@ -25,7 +26,7 @@ namespace Game.Init
         public MissionsGraph(MissionData[] _missions, Transform container)
         {
             GenerateGraph(_missions, container);
-            TriggerListenerSystem.Instance.AddListener(this, typeof(MissionMessage));
+            TriggerListenerSystem.AddListener(this, typeof(MissionDoneMessage));
         }
 
         public void GenerateGraph(MissionData[] _missions, Transform container)
@@ -56,7 +57,7 @@ namespace Game.Init
 
         public void OnTrigger(IMessage message)
         {
-            if (message is MissionMessage mess 
+            if (message is MissionDoneMessage mess 
                 && _keysForMissions.ContainsKey(mess.DoneMissionID))
             {
                 foreach(var item in _keysForMissions[mess.DoneMissionID])
@@ -75,7 +76,7 @@ namespace Game.Init
 
         public void Dispose()
         {
-            TriggerListenerSystem.Instance.RemoveListener(this, typeof(MissionMessage));
+            TriggerListenerSystem.RemoveListener(this);
         }
     }
 }
