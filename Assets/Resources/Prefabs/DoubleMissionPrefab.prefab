@@ -29,8 +29,8 @@ Transform:
   m_LocalScale: {x: 0.5, y: 0.5, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 7514120620770475716}
   - {fileID: 6875142524971031119}
+  - {fileID: 7514120620770475716}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -47,8 +47,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   missionButtons:
-  - {fileID: 708609216}
   - {fileID: 3976376482277498955}
+  - {fileID: 708609216}
 --- !u!1001 &1179750499462297619
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -62,7 +62,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8653899988838647511, guid: 2a82e0ff589622746a4e94530764c875, type: 3}
       propertyPath: m_RootOrder
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8653899988838647511, guid: 2a82e0ff589622746a4e94530764c875, type: 3}
       propertyPath: m_LocalPosition.x
@@ -135,7 +135,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8653899988838647511, guid: 2a82e0ff589622746a4e94530764c875, type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8653899988838647511, guid: 2a82e0ff589622746a4e94530764c875, type: 3}
       propertyPath: m_LocalPosition.x
