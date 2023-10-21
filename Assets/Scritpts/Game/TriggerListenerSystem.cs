@@ -1,19 +1,16 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using Game.Extentions;
+using Game.Messages;
 
 namespace Game.Systems
 {
-    public class TriggerListenerSystem : Singleton<TriggerListenerSystem>, IDisposable
+    public static class TriggerListenerSystem
     {
-        private Dictionary<Type, List<IListener>> _listenersByType;
+        private static Dictionary<Type, List<IListener>> _listenersByType = new Dictionary<Type, List<IListener>>();
 
-        public TriggerListenerSystem()
-        {
-            _listenersByType = new Dictionary<Type, List<IListener>>();
-        }
-
-        public virtual void AddListener(IListener listener, Type messageType)
+        public static void AddListener(IListener listener, Type messageType)
         {
             var type = messageType;
             if (_listenersByType.ContainsKey(type))
@@ -29,7 +26,7 @@ namespace Game.Systems
             }
         }
 
-        public void OnTrigger(IMessage message)
+        public static void OnTrigger(IMessage message)
         {
             var type = message.GetType();
             if (_listenersByType.ContainsKey(type))
@@ -41,25 +38,17 @@ namespace Game.Systems
             Debug.LogWarning($"Key {type} not contains in listeners dictionary");
         }
 
-        public virtual void RemoveListener(IListener listener, Type messageType)
+        public static void RemoveListener(IListener listener)
         {
-            var type = listener.GetType();
-            if (_listenersByType.ContainsKey(type))
+            foreach (var item in _listenersByType.Values)
             {
-                if (_listenersByType[type].Contains(listener))
-                    _listenersByType[type].Remove(listener);
-                else
-                    Debug.LogWarning($"Listener {type} not contains in dictionary");
-
-                return;
+                if (item.Contains(listener))
+                    item.RemoveBySwap(item.IndexOf(listener));
             }
-
-            Debug.LogWarning($"Key {type} not contains in listeners dictionary");
         }
 
-        public override void Dispose()
+        public static void ClearAllListeners()
         {
-            base.Dispose();
             _listenersByType.Clear();
         }
     }
@@ -67,9 +56,5 @@ namespace Game.Systems
     public interface IListener
     {
         public abstract void OnTrigger(IMessage message = null);
-    }
-
-    public interface IMessage
-    {
     }
 }
