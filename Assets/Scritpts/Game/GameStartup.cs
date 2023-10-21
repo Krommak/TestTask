@@ -12,7 +12,7 @@ namespace Game
     public class GameStartup : MonoBehaviour
     {
         [SerializeField]
-        private MissionsGraph _graph;
+        private MissionsGraphData _graph;
         [SerializeField]
         private BeginningSettings _beginningSettings;
         [SerializeField]

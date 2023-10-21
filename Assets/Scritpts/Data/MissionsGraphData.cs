@@ -6,7 +6,7 @@ using UnityEngine;
 namespace Game.Init
 {
     [CreateAssetMenu(fileName = "MissionsGraph", menuName = "Game/MissionsGraph")]
-    public class MissionsGraph : ScriptableObject
+    public class MissionsGraphData : ScriptableObject
     {
         public MissionData[] _missions;
         private Dictionary<string, HashSet<Mission>> _keysForMissions;

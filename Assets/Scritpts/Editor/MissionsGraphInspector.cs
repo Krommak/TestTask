@@ -4,8 +4,8 @@ using UnityEngine;
 
 namespace Game.Inspectors
 {
-    [CustomEditor(typeof(MissionsGraph))]
-    public class MissionsGraphInspector : CustomInspector<MissionsGraph>
+    [CustomEditor(typeof(MissionsGraphData))]
+    public class MissionsGraphInspector : CustomInspector<MissionsGraphData>
     {
         private SerializedProperty _missions;
 
